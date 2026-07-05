@@ -47,7 +47,7 @@ const files = {
     render();
 
   
-    if (window.innerWidth <= 640) {
+    if (isMobileLayout()) {
       const targetPane = document.querySelector(`.editor-pane[data-pane="${id}"]`);
       if (targetPane) {
         targetPane.scrollIntoView({ behavior: 'smooth' });
@@ -72,7 +72,7 @@ const files = {
 
   const sidebar = document.getElementById('sidebar');
   const btnExplorer = document.getElementById('btn-explorer');
-  if (window.innerWidth <= 640) {
+  if (isMobileLayout()) {
     sidebar.classList.add('collapsed');
     btnExplorer.classList.remove('active');
   }
@@ -231,7 +231,7 @@ const files = {
   const scrollContainer = document.querySelector('.editor-scroll');
   
   const scrollObserver = new IntersectionObserver((entries) => {
-    if (window.innerWidth > 640) return;
+    if (!isMobileLayout()) return;
 
     entries.forEach(entry => {
       if (entry.isIntersecting) {
