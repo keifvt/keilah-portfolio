@@ -1,0 +1,322 @@
+/* =====================================================================
+   animations.css
+   Motion layer for keilah-portfolio — scroll reveals, tilt, skill bars,
+   a syntax-highlighted "bio as code" block, and a commit-graph flourish.
+   Reuses the existing Dracula/Alucard CSS variables + fonts only.
+   Everything respects prefers-reduced-motion.
+   ===================================================================== */
+
+/* ================= Generic scroll reveal ================= */
+.reveal{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .55s cubic-bezier(.22,.8,.32,1), transform .55s cubic-bezier(.22,.8,.32,1);
+  will-change:opacity, transform;
+}
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+/* stagger cards / list items a touch so groups don't pop in as one block */
+.stat-grid .stat-card.reveal:nth-child(1){ transition-delay:.02s; }
+.stat-grid .stat-card.reveal:nth-child(2){ transition-delay:.08s; }
+.stat-grid .stat-card.reveal:nth-child(3){ transition-delay:.14s; }
+.stat-grid .stat-card.reveal:nth-child(4){ transition-delay:.2s; }
+.entry.reveal{ transition-delay:.03s; }
+.project.reveal{ transition-delay:.03s; }
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+}
+
+/* ================= Card tilt (mouse-tracked, JS-driven) ================= */
+.tilt{ transition:transform .18s ease, box-shadow .2s ease; }
+.tilt:hover{ box-shadow:0 16px 34px rgba(0,0,0,.3); }
+@media (prefers-reduced-motion: reduce){
+  .tilt{ transition:box-shadow .18s ease; }
+}
+
+/* ================= Bio, written as code ================= */
+.bio-code{
+  margin:28px 0 34px;
+  background:var(--bg-deep);
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.22);
+}
+.bio-code-head{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px;
+  background:var(--bg-hover);
+  border-bottom:1px solid var(--border);
+}
+.bio-code-head .dot{ width:9px; height:9px; border-radius:50%; flex:0 0 auto; }
+.bio-code-head .r{ background:#ff5f57; }
+.bio-code-head .y{ background:#febc2e; }
+.bio-code-head .g{ background:#28c840; }
+.bio-code-name{
+  margin-left:6px; font-family:var(--mono); font-size:.72rem; color:var(--fg-dim);
+}
+.bio-code-body{
+  padding:18px 20px 20px;
+  font-family:var(--mono);
+  font-size:.83rem;
+  line-height:1.9;
+}
+.bc-line{
+  display:block;
+  white-space:pre-wrap;
+  opacity:0;
+  transform:translateX(-10px);
+  transition:opacity .4s ease, transform .4s ease;
+}
+.bc-indent{ padding-left:1.4em; }
+.bio-code.is-visible .bc-line{ opacity:1; transform:translateX(0); }
+.bio-code.is-visible .bc-line:nth-child(1){ transition-delay:.05s; }
+.bio-code.is-visible .bc-line:nth-child(2){ transition-delay:.12s; }
+.bio-code.is-visible .bc-line:nth-child(3){ transition-delay:.19s; }
+.bio-code.is-visible .bc-line:nth-child(4){ transition-delay:.26s; }
+.bio-code.is-visible .bc-line:nth-child(5){ transition-delay:.33s; }
+.bio-code.is-visible .bc-line:nth-child(6){ transition-delay:.4s; }
+.bio-code.is-visible .bc-line:nth-child(7){ transition-delay:.47s; }
+.bio-code.is-visible .bc-line:nth-child(8){ transition-delay:.54s; }
+
+.bc-kw{ color:var(--pink); }
+.bc-var{ color:var(--cyan); }
+.bc-key{ color:var(--fg); }
+.bc-str{ color:var(--yellow); }
+.bc-punc{ color:var(--fg-dim); }
+.bc-cursor{
+  display:inline-block; width:7px; height:14px;
+  background:var(--purple);
+  margin-left:4px; vertical-align:-2px;
+  animation:bc-blink 1s steps(1) infinite;
+}
+@keyframes bc-blink{ 50%{ opacity:0; } }
+@media (prefers-reduced-motion: reduce){
+  .bc-line{ opacity:1; transform:none; transition:none; }
+  .bc-cursor{ animation:none; }
+}
+
+/* ================= Frontend proficiency bars ================= */
+.skills-panel{ margin-bottom:34px; }
+.skills-panel-label{
+  font-family:var(--mono); font-size:.7rem; color:var(--fg-dim);
+  text-transform:uppercase; letter-spacing:.1em; margin-bottom:16px;
+}
+.skill-bar{ margin-bottom:15px; }
+.skill-bar:last-child{ margin-bottom:0; }
+.skill-bar-top{
+  display:flex; justify-content:space-between; align-items:baseline;
+  font-family:var(--sans); font-size:.83rem; margin-bottom:7px; color:var(--fg);
+}
+.skill-bar-top span:last-child{
+  font-family:var(--mono); color:var(--fg-dim); font-size:.74rem;
+}
+.skill-track{
+  height:6px; border-radius:4px; background:var(--bg-select); overflow:hidden;
+}
+.skill-fill{
+  height:100%; width:0%; border-radius:4px;
+  background:linear-gradient(90deg, var(--purple), var(--pink));
+  transition:width 1.1s cubic-bezier(.22,.8,.32,1);
+}
+@media (prefers-reduced-motion: reduce){
+  .skill-fill{ transition:none; }
+}
+
+/* ================= Commit-style activity graph ================= */
+.contrib{ margin-bottom:8px; }
+.contrib-label{
+  font-family:var(--mono); font-size:.7rem; color:var(--fg-dim);
+  text-transform:uppercase; letter-spacing:.1em; margin-bottom:12px;
+}
+.contrib-grid{
+  display:grid;
+  grid-template-rows:repeat(7, 11px);
+  grid-auto-flow:column;
+  grid-auto-columns:11px;
+  gap:3px;
+  max-width:100%;
+  overflow:hidden;
+}
+.contrib-cell{
+  border-radius:2px;
+  background:var(--bg-select);
+  transform:scale(.35);
+  opacity:0;
+  transition:transform .32s cubic-bezier(.34,1.56,.64,1), opacity .32s ease;
+  transition-delay:calc(var(--i, 0) * 6ms);
+}
+.contrib-grid.seen .contrib-cell{ transform:scale(1); opacity:1; }
+.contrib-cell[data-l="1"]{ background:color-mix(in srgb, var(--green) 30%, var(--bg-select)); }
+.contrib-cell[data-l="2"]{ background:color-mix(in srgb, var(--green) 55%, var(--bg-select)); }
+.contrib-cell[data-l="3"]{ background:color-mix(in srgb, var(--green) 80%, var(--bg-select)); }
+.contrib-cell[data-l="4"]{ background:var(--green); }
+@media (prefers-reduced-motion: reduce){
+  .contrib-cell{ transform:none !important; opacity:1 !important; transition:none !important; }
+}
+
+/* ================= Small screens: keep everything tidy ================= */
+@media (max-width:480px){
+  .contrib-grid{ grid-template-rows:repeat(7, 9px); grid-auto-columns:9px; }
+  .bio-code-body{ font-size:.76rem; padding:16px 14px 18px; }
+}
+
+/* ================= Accessibility utility ================= */
+.sr-only{
+  position:absolute !important;
+  width:1px; height:1px;
+  padding:0; margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* ================= Hero typewriter ================= */
+.type-target{ display:inline; }
+.type-cursor{
+  display:inline-block;
+  width:.5ch; height:.95em;
+  background:var(--purple);
+  margin-left:2px;
+  vertical-align:-0.12em;
+  animation:bc-blink 1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce){
+  .type-cursor{ animation:none; }
+}
+
+/* ================= Generic staggered line (used inside code-card / contact-boot) ================= */
+.stagger-line{
+  display:block;
+  white-space:pre-wrap;
+  opacity:0;
+  transform:translateX(-8px);
+  transition:opacity .4s ease, transform .4s ease;
+  transition-delay:calc(var(--i, 0) * 45ms);
+}
+.code-card.is-visible .stagger-line,
+.contact-boot.is-visible .stagger-line{
+  opacity:1;
+  transform:translateX(0);
+}
+@media (prefers-reduced-motion: reduce){
+  .stagger-line{ opacity:1; transform:none; transition:none; }
+}
+
+/* ================= Shared "file window" chrome (used by education.json / certifications.yaml) ================= */
+.code-card{
+  margin-top:8px;
+  background:var(--bg-deep);
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.2);
+}
+.code-card-head{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px;
+  background:var(--bg-hover);
+  border-bottom:1px solid var(--border);
+}
+.code-card-name{
+  margin-left:6px; font-family:var(--mono); font-size:.72rem; color:var(--fg-dim);
+}
+.code-card-body{
+  padding:20px 22px 22px;
+  font-family:var(--mono);
+  font-size:.83rem;
+  line-height:1.85;
+  overflow-x:auto;
+}
+.jt-indent{ padding-left:1.4em; }
+.jt-indent2{ padding-left:2.8em; }
+.jt-punc{ color:var(--fg-dim); }
+.jt-key{ color:var(--cyan); }
+.jt-str{ color:var(--yellow); }
+
+.yt-indent{ padding-left:1.4em; }
+.yt-dash{ color:var(--pink); }
+.yt-key{ color:var(--cyan); }
+.yt-val{ color:var(--fg); }
+
+.verified-badge{
+  margin-left:auto;
+  display:flex; align-items:center; gap:5px;
+  font-family:var(--mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--green);
+  background:color-mix(in srgb, var(--green) 14%, transparent);
+  padding:3px 9px; border-radius:999px;
+  transform:scale(0) rotate(-8deg);
+  opacity:0;
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1), opacity .3s ease;
+  transition-delay:.35s;
+}
+.verified-badge i{ font-size:11px; }
+.code-card.is-visible .verified-badge{ transform:scale(1) rotate(0deg); opacity:1; }
+@media (prefers-reduced-motion: reduce){
+  .verified-badge{ transform:none; opacity:1; transition:none; }
+}
+@media (max-width:480px){
+  .verified-badge{ display:none; }
+}
+
+/* ================= Project cards — mini browser mockup ================= */
+.project-card{
+  margin-bottom:22px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+  background:var(--bg-hover);
+  box-shadow:0 14px 34px rgba(0,0,0,.18);
+}
+.project-card:last-child{ margin-bottom:0; }
+.browser-frame{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px;
+  background:var(--bg-deep);
+  border-bottom:1px solid var(--border);
+}
+.browser-url{
+  margin-left:10px; flex:1; min-width:0;
+  display:flex; align-items:center; gap:6px;
+  background:var(--bg-select); border-radius:6px;
+  padding:4px 10px;
+  font-family:var(--mono); font-size:.72rem; color:var(--fg-dim);
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.browser-url i{ font-size:11px; color:var(--green); flex:0 0 auto; }
+.project-body{ padding:22px 22px 24px; }
+.project-body .title{ font-family:var(--mono); font-size:1rem; font-weight:600; margin-bottom:10px; }
+.project-body p{ font-size:.9rem; color:var(--fg-mid); max-width:56ch; margin-bottom:14px; }
+.project-body .stack{ margin-bottom:16px; }
+.project-card .link{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:var(--mono); font-size:.8rem; text-decoration:none;
+  color:var(--purple); border-bottom:1px solid transparent;
+}
+.project-card .link:hover{ border-color:var(--purple); }
+.project-card .link i{ font-size:12px; transition:transform .15s ease; }
+.project-card .link:hover i{ transform:translateX(3px); }
+
+/* ================= Contact: boot-sequence intro ================= */
+.contact-boot{
+  font-family:var(--mono); font-size:.85rem;
+  display:flex; flex-direction:column; gap:6px;
+  margin-bottom:26px;
+}
+.contact-boot .boot-ok{ color:var(--green); }
+
+/* ================= Form polish ================= */
+.form-row input:focus, .form-row textarea:focus{
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--purple) 22%, transparent);
+}
+.btn-send{ position:relative; }
+.btn-send:active{ transform:scale(.97); }
+.btn-send i{ transition:transform .15s ease; }
+.btn-send:hover i{ transform:translateX(3px) rotate(6deg); }
+@media (prefers-reduced-motion: reduce){
+  .btn-send:active{ transform:none; }
+  .btn-send:hover i{ transform:none; }
+}

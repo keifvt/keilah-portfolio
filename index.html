@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>keilah-portfolio</title>
+<link rel="stylesheet" href="https://unpkg.com/@vscode/codicons@0.0.36/dist/codicon.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+<div class="macbook maximized">
+<div class="window">
+
+  <div class="titlebar">
+    <div class="traffic">
+      <span class="c" id="btnClose" title="Close"></span>
+      <span class="m" id="btnMin" title="Minimize"></span>
+      <span class="z" id="btnMax" title="Maximize"></span>
+    </div>
+    <div class="wintitle"><i class="codicon codicon-vm"></i> keilah-portfolio</div>
+  </div>
+
+  <div class="workbench">
+
+    <div class="activity-bar">
+      <button class="active" title="Explorer" id="btn-explorer"><i class="codicon codicon-files"></i></button>
+      <button title="Search (⌘K)" id="btn-search"><i class="codicon codicon-search"></i></button>
+      <button title="Source Control"><i class="codicon codicon-source-control"></i></button>
+      <button title="Run and Debug"><i class="codicon codicon-debug-alt"></i></button>
+      <button title="Extensions"><i class="codicon codicon-extensions"></i></button>
+      <div class="spacer"></div>
+      <button title="Toggle Terminal" id="btn-terminal"><i class="codicon codicon-terminal"></i></button>
+      <button title="Account"><i class="codicon codicon-account"></i></button>
+      <button title="Settings"><i class="codicon codicon-settings-gear"></i></button>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span>Explorer</span>
+        <i class="codicon codicon-ellipsis"></i>
+      </div>
+      <div class="tree-root">KEILAH-PORTFOLIO</div>
+      <div class="tree">
+        <div class="tree-item ft-md" data-file="about"><i class="codicon codicon-file-code fic"></i> about.md</div>
+        <div class="tree-item ft-json" data-file="education"><i class="codicon codicon-file-code fic"></i> education.json</div>
+        <div class="tree-folder open" id="folder-projects">
+          <i class="codicon codicon-chevron-right chev"></i>
+          <i class="codicon codicon-folder-opened fic"></i> projects
+        </div>
+        <div class="tree-children open" id="projects-children">
+          <div class="tree-item ft-js" data-file="proj-barangay" style="padding-left:44px;"><i class="codicon codicon-file-code fic"></i> barangay-website.js</div>
+          <div class="tree-item ft-js" data-file="proj-studykart" style="padding-left:44px;"><i class="codicon codicon-file-code fic"></i> studykart_go!.js</div>
+          <div class="tree-item ft-js" data-file="proj-pixecured" style="padding-left:44px;"><i class="codicon codicon-file-code fic"></i> pixecured.js</div>
+        </div>
+        <!-- <div class="tree-item ft-ts" data-file="experience"><i class="codicon codicon-file-code fic"></i> experience.ts</div> -->
+        <div class="tree-item ft-yaml" data-file="certifications"><i class="codicon codicon-file-code fic"></i> certifications.yaml</div>
+        <div class="tree-item ft-contact" data-file="contact"><i class="codicon codicon-mail fic"></i> contact.js</div>
+        
+      </div>
+    </div>
+
+    <div class="editor-area">
+      <div class="tabs-bar" id="tabsBar"></div>
+
+      <div class="editor-scroll">
+
+        <!-- ABOUT -->
+        <div class="editor-pane" data-pane="about">
+          <div class="preview about-preview">
+            
+
+            <div class="about-grid">
+              <div class="about-main">
+                <h1 class="hero-title reveal" id="heroTitle">
+                  <span class="sr-only">Engineering intelligent, scalable systems.</span>
+                  <span class="type-target" aria-hidden="true"></span>
+                </h1>
+                <p class="lede reveal">
+                  I'm Keilah — an aspiring AI and full-stack developer, 3rd year Computer Science at Cagayan State University, turning theory like Automata and Data Science into interfaces people actually enjoy using.
+                </p>
+                <div class="socials reveal">
+                  <a href="mailto:tumaneng.keilah1@gmail.com"><i class="codicon codicon-mail"></i> Email</a>
+                  <a href="https://github.com/keifvt" target="_blank"><i class="codicon codicon-github-inverted"></i> GitHub</a>
+                  <a href="https://www.linkedin.com/in/keilah-fye-tumaneng-304431288" target="_blank"><i class="codicon codicon-link-external"></i> LinkedIn</a>
+                </div>
+
+                <!-- Bio, written as code -->
+                <div class="bio-code reveal" id="bioCode">
+                  <div class="bio-code-head">
+                    <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                    <span class="bio-code-name">whoami.js</span>
+                  </div>
+                  <div class="bio-code-body">
+                    <span class="bc-line"><span class="bc-kw">const</span> <span class="bc-var">keilah</span> <span class="bc-punc">=</span> {</span>
+                    <span class="bc-line bc-indent"><span class="bc-key">role</span><span class="bc-punc">:</span> <span class="bc-str">"AI &amp; Full-Stack Developer"</span>,</span>
+                    <span class="bc-line bc-indent"><span class="bc-key">status</span><span class="bc-punc">:</span> <span class="bc-str">"3rd Year BS CS, Cagayan State University"</span>,</span>
+                    <span class="bc-line bc-indent"><span class="bc-key">stack</span><span class="bc-punc">:</span> [<span class="bc-str">"Python"</span>, <span class="bc-str">"JavaScript"</span>, <span class="bc-str">"PHP"</span>, <span class="bc-str">"C#"</span>, <span class="bc-str">"MySQL"</span>],</span>
+                    <span class="bc-line bc-indent"><span class="bc-key">focus</span><span class="bc-punc">:</span> <span class="bc-str">"agentic AI &amp; intelligent automation"</span>,</span>
+                    <span class="bc-line bc-indent"><span class="bc-key">approach</span><span class="bc-punc">:</span> <span class="bc-str">"clean, efficient, maintainable code"</span>,</span>
+                    <span class="bc-line bc-indent"><span class="bc-key">currentlyBuilding</span><span class="bc-punc">:</span> <span class="bc-str">"this portfolio, obviously"</span>,</span>
+                    <span class="bc-line">}<span class="bc-punc">;</span><span class="bc-cursor"></span></span>
+                  </div>
+                </div>
+
+                <!-- Frontend proficiency -->
+                <!-- <div class="skills-panel reveal">
+                  <div class="skills-panel-label">// frontend.proficiency</div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-top"><span>HTML &amp; CSS</span><span>95%</span></div>
+                    <div class="skill-track"><div class="skill-fill" data-level="95"></div></div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-top"><span>JavaScript / DOM</span><span>88%</span></div>
+                    <div class="skill-track"><div class="skill-fill" data-level="88"></div></div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-top"><span>Responsive &amp; Accessible UI</span><span>90%</span></div>
+                    <div class="skill-track"><div class="skill-fill" data-level="90"></div></div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-top"><span>Animation &amp; Interaction</span><span>85%</span></div>
+                    <div class="skill-track"><div class="skill-fill" data-level="85"></div></div>
+                  </div>
+                </div> -->
+
+                <!-- Commit-style activity graph -->
+                <!-- <div class="contrib reveal">
+                  <div class="contrib-label">// build habit — last 18 weeks</div>
+                  <div class="contrib-grid" id="contribGrid"></div>
+                </div> -->
+
+                <!-- <div class="timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-head">
+                      <span class="timeline-title">The Spark</span>
+                      <span class="timeline-badge">INIT</span>
+                    </div>
+                    <p>First lines of HTML back in senior high. Curiosity about "how websites
+                    actually work" turned into late nights rebuilding things just to understand them.</p>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-head">
+                      <span class="timeline-title">The Build-Up</span>
+                      <span class="timeline-badge">LEARN</span>
+                    </div>
+                    <p>College coursework in Automata Theory, Software Engineering, and Data Science,
+                    paired with self-taught PHP/MySQL and real, client-style requirements.</p>
+                  </div>
+                  <div class="timeline-item current">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-head">
+                      <span class="timeline-title">Full-Stack, For Real</span>
+                      <span class="timeline-badge">CURRENT</span>
+                    </div>
+                    <p>Shipping actual systems now — a barangay website in production, a healthcare AI
+                    pitch, and a growing habit of finishing what I start.</p>
+                  </div>
+                </div> -->
+              </div>
+
+              <aside class="about-side">
+                <div class="stat-grid">
+                  <div class="stat-card tilt reveal">
+                    <div class="stat-card-top">
+                      <span class="stat-icon"><i class="codicon codicon-server-process"></i></span>
+                      <span class="stat-label">Core Stack</span>
+                    </div>
+                    <div class="stat-value">Python / JS</div>
+                    <div class="stat-sub">PHP, MySQL, C#</div>
+                  </div>
+                  <div class="stat-card tilt reveal">
+                    <div class="stat-card-top">
+                      <span class="stat-icon"><i class="codicon codicon-rocket"></i></span>
+                      <span class="stat-label">Focus</span>
+                    </div>
+                    <div class="stat-value">Agentic AI</div>
+                    <div class="stat-sub">Web & Mobile Dev</div>
+                  </div>
+                  <div class="stat-card tilt reveal">
+                    <div class="stat-card-top">
+                      <span class="stat-icon"><i class="codicon codicon-compass"></i></span>
+                      <span class="stat-label">Approach</span>
+                    </div>
+                    <div class="stat-value">Practical</div>
+                    <div class="stat-sub">Clean Architecture</div>
+                  </div>
+                  <div class="stat-card tilt reveal">
+                    <div class="stat-card-top">
+                      <span class="stat-icon"><i class="codicon codicon-mortar-board"></i></span>
+                      <span class="stat-label">Status</span>
+                    </div>
+                    <div class="stat-value">3rd Year CS</div>
+                    <div class="stat-sub">Aspiring Software Engineer</div>
+                  </div>
+                </div>
+                <div class="cta-card reveal">
+                  <div>
+                    <strong>Have a complex problem?</strong>
+                    <span>Let's talk architecture and execution.</span>
+                  </div>
+                  <button class="cta-btn" onclick="openFile('contact')">Get In Touch <i class="codicon codicon-arrow-right"></i></button>
+                </div>
+              </aside>
+            </div>
+
+            <div class="tech-marquee">
+              <div class="tech-marquee-label">// tech stack</div>
+              <div class="tech-track">
+                <span class="tech-item"><i class="codicon codicon-file-code" style="color:var(--orange)"></i> HTML5</span>
+                <span class="tech-item"><i class="codicon codicon-symbol-color" style="color:var(--cyan)"></i> CSS3</span>
+                <span class="tech-item"><i class="codicon codicon-symbol-event" style="color:var(--yellow)"></i> JavaScript</span>
+                <span class="tech-item"><i class="codicon codicon-server-process" style="color:var(--purple)"></i> PHP</span>
+                <span class="tech-item"><i class="codicon codicon-database" style="color:var(--cyan)"></i> MySQL</span>
+                <span class="tech-item"><i class="codicon codicon-symbol-class" style="color:var(--red)"></i> Java</span>
+                <span class="tech-item"><i class="codicon codicon-symbol-misc" style="color:var(--green)"></i> Python</span>
+                <span class="tech-item"><i class="codicon codicon-git-branch" style="color:var(--orange)"></i> Git</span>
+                <span class="tech-item"><i class="codicon codicon-github-inverted" style="color:var(--fg)"></i> GitHub</span>
+                <span class="tech-item"><i class="codicon codicon-code" style="color:var(--purple)"></i> VS Code</span>
+                <!-- duplicate for seamless loop -->
+                <span class="tech-item"><i class="codicon codicon-file-code" style="color:var(--orange)"></i> HTML5</span>
+                <span class="tech-item"><i class="codicon codicon-symbol-color" style="color:var(--cyan)"></i> CSS3</span>
+                <span class="tech-item"><i class="codicon codicon-symbol-event" style="color:var(--yellow)"></i> JavaScript</span>
+                <span class="tech-item"><i class="codicon codicon-server-process" style="color:var(--purple)"></i> PHP</span>
+                <span class="tech-item"><i class="codicon codicon-database" style="color:var(--cyan)"></i> MySQL</span>
+                <span class="tech-item"><i class="codicon codicon-symbol-class" style="color:var(--red)"></i> Java</span>
+                <span class="tech-item"><i class="codicon codicon-symbol-misc" style="color:var(--green)"></i> Python</span>
+                <span class="tech-item"><i class="codicon codicon-git-branch" style="color:var(--orange)"></i> Git</span>
+                <span class="tech-item"><i class="codicon codicon-github-inverted" style="color:var(--fg)"></i> GitHub</span>
+                <span class="tech-item"><i class="codicon codicon-code" style="color:var(--purple)"></i> VS Code</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="editor-pane" data-pane="education">
+          <div class="preview">
+            <div class="eyebrow reveal"><i class="codicon codicon-mortar-board"></i> Education</div>
+            <h2 class="section-title reveal">Education</h2>
+
+            <div class="code-card reveal">
+              <div class="code-card-head">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="code-card-name">education.json</span>
+              </div>
+              <div class="code-card-body json-body">
+                <span class="stagger-line" style="--i:0"><span class="jt-punc">[</span></span>
+                <span class="stagger-line jt-indent" style="--i:1"><span class="jt-punc">{</span></span>
+                <span class="stagger-line jt-indent2" style="--i:2"><span class="jt-key">"period"</span><span class="jt-punc">:</span> <span class="jt-str">"2024 — Present"</span><span class="jt-punc">,</span></span>
+                <span class="stagger-line jt-indent2" style="--i:3"><span class="jt-key">"degree"</span><span class="jt-punc">:</span> <span class="jt-str">"BS Computer Science"</span><span class="jt-punc">,</span></span>
+                <span class="stagger-line jt-indent2" style="--i:4"><span class="jt-key">"school"</span><span class="jt-punc">:</span> <span class="jt-str">"Cagayan State University"</span><span class="jt-punc">,</span></span>
+                <span class="stagger-line jt-indent2" style="--i:5"><span class="jt-key">"summary"</span><span class="jt-punc">:</span> <span class="jt-str">"Building a foundation in software engineering, algorithms, AI, data science, web &amp; mobile dev, and cybersecurity."</span></span>
+                <span class="stagger-line jt-indent" style="--i:6"><span class="jt-punc">},</span></span>
+                <span class="stagger-line jt-indent" style="--i:7"><span class="jt-punc">{</span></span>
+                <span class="stagger-line jt-indent2" style="--i:8"><span class="jt-key">"period"</span><span class="jt-punc">:</span> <span class="jt-str">"2022 — 2024"</span><span class="jt-punc">,</span></span>
+                <span class="stagger-line jt-indent2" style="--i:9"><span class="jt-key">"degree"</span><span class="jt-punc">:</span> <span class="jt-str">"Senior High School — STEM"</span><span class="jt-punc">,</span></span>
+                <span class="stagger-line jt-indent2" style="--i:10"><span class="jt-key">"school"</span><span class="jt-punc">:</span> <span class="jt-str">"Delfin Albano (Magsaysay) Stand-Alone SHS"</span><span class="jt-punc">,</span></span>
+                <span class="stagger-line jt-indent2" style="--i:11"><span class="jt-key">"summary"</span><span class="jt-punc">:</span> <span class="jt-str">"Capstone: Arduino-based automated fertigation system for smart agriculture."</span></span>
+                <span class="stagger-line jt-indent" style="--i:12"><span class="jt-punc">}</span></span>
+                <span class="stagger-line" style="--i:13"><span class="jt-punc">]</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <!-- <div class="editor-pane" data-pane="experience">
+          <div class="preview">
+            <div class="eyebrow reveal"><i class="codicon codicon-briefcase"></i> Experience</div>
+            <h2 class="section-title reveal">Experience</h2>
+            <div class="entry reveal">
+              <div class="when">2025 — Present</div>
+              <div class="what">
+                <div class="title">Team Contributor — Product & Research</div>
+                <div class="org">ALALAY AI / AlagangPH.ai (Startup Pitch Competition)</div>
+                <p>Worked on a Philippine healthcare AI platform concept end-to-end — market
+                sizing (TAM/SAM/SOM), feature architecture, competitive positioning against
+                Hippocratic AI, pitch scripting, and financial modeling, alongside teammates
+                Kurt Felipe and Keilah Fye Tumaneng.</p>
+              </div>
+            </div>
+            <div class="entry reveal">
+              <div class="when">2024 — Present</div>
+              <div class="what">
+                <div class="title">Independent Web Developer — Academic & Community Projects</div>
+                <div class="org">Self-directed</div>
+                <p>Designed and built a full local-government website for Barangay Andarayan,
+                Delfin Albano, Isabela, plus a student academic management concept
+                (StudyKart GO!) and a PHP/MySQL Student Information System — fixing real
+                security issues along the way (SQL injection, plaintext passwords) and adding
+                features like cascading dropdowns.</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        
+
+        <!-- PROJECTS -->
+        <div class="editor-pane" data-pane="proj-barangay">
+          <div class="preview">
+            <div class="eyebrow reveal"><i class="codicon codicon-repo"></i> Projects</div>
+            <h2 class="section-title reveal">Selected projects</h2>
+            <div class="project-card tilt reveal">
+              <div class="browser-frame">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="browser-url"><i class="codicon codicon-lock"></i> keifvt.github.io/brgy_websitee</span>
+              </div>
+              <div class="project-body">
+                <div class="title">Barangay Andarayan Government Website</div>
+                <p>A front-end prototype local-government website for Barangay Andarayan, Delfin Albano, Isabela —
+                including an interactive services page with filtering, expandable service cards,
+                and a consistent design system built for a final project.</p>
+                <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <a class="link" href="https://keifvt.github.io/brgy_websitee/" target="_blank">View live <i class="codicon codicon-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="editor-pane" data-pane="proj-studykart">
+          <div class="preview">
+            <div class="eyebrow reveal"><i class="codicon codicon-repo"></i> Projects</div>
+            <h2 class="section-title reveal">Selected projects</h2>
+            <div class="project-card tilt reveal">
+              <div class="browser-frame">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="browser-url"><i class="codicon codicon-lock"></i> keifvt.github.io/StudyKart-GO</span>
+              </div>
+              <div class="project-body">
+                <div class="title">StudyKart GO!</div>
+                <p>A learning management interface featuring a Pomodoro timer, schedule tracker, and grade book. Built completely with vanilla HTML, CSS, and JavaScript to deliver a fast, modular frontend experience.</p>
+                <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <a class="link" href="https://keifvt.github.io/StudyKart-GO/" target="_blank">View live <i class="codicon codicon-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="editor-pane" data-pane="proj-pixecured">
+          <div class="preview">
+            <div class="eyebrow reveal"><i class="codicon codicon-repo"></i> Projects</div>
+            <h2 class="section-title reveal">Selected projects</h2>
+            <div class="project-card tilt reveal">
+              <div class="browser-frame">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="browser-url"><i class="codicon codicon-lock"></i> keifvt.github.io/pixecured</span>
+              </div>
+              <div class="project-body">
+                <div class="title">PIXecured</div>
+                <p>A byte-level Vigenère-based encryption and decryption system via pixel mapping. Features a retro 8-bit interface that encrypts files and text into RGB pixels, alongside a built-in "Cipher Quest" mini-game to teach cryptographic concepts.</p>
+                <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <a class="link" href="https://keifvt.github.io/pixecured/" target="_blank">View live <i class="codicon codicon-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <div class="editor-pane" data-pane="certifications">
+          <div class="preview">
+            <div class="eyebrow reveal"><i class="codicon codicon-verified"></i> Certifications</div>
+            <h2 class="section-title reveal">Certifications &amp; training</h2>
+
+            <div class="code-card reveal">
+              <div class="code-card-head">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="code-card-name">certifications.yaml</span>
+                <span class="verified-badge"><i class="codicon codicon-check"></i> verified</span>
+              </div>
+              <div class="code-card-body yaml-body">
+                <span class="stagger-line" style="--i:0"><span class="yt-dash">-</span> <span class="yt-key">title:</span> <span class="yt-val">Career Service Professional Examination Passer</span></span>
+                <span class="stagger-line yt-indent" style="--i:1"><span class="yt-key">issuer:</span> <span class="yt-val">Civil Service Commission (CSC), Philippines</span></span>
+                <span class="stagger-line yt-indent" style="--i:2"><span class="yt-key">year:</span> <span class="yt-val">2025</span></span>
+                <span class="stagger-line yt-indent" style="--i:3"><span class="yt-key">notes:</span> <span class="yt-val">Verified proficiency in verbal, analytical, and clerical competencies for CSC eligibility.</span></span>
+              </div>
+            </div>
+            <!--
+            <div class="entry reveal">
+              <div class="when">20XX</div>
+              <div class="what">
+                <div class="title">[Workshop / Training Name]</div>
+                <div class="org">[Issuing Body]</div>
+                <p></p>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="editor-pane" data-pane="contact">
+          <div class="preview">
+            <div class="eyebrow reveal"><i class="codicon codicon-mail"></i> Contact</div>
+            <h2 class="section-title reveal">Let's work together</h2>
+
+            <div class="contact-boot reveal" id="contactBoot">
+              <span class="stagger-line" style="--i:0"><span class="prompt">&gt;</span> node contact.js</span>
+              <span class="stagger-line out" style="--i:1">Loading contact form...</span>
+              <span class="stagger-line" style="--i:2"><span class="boot-ok">✓</span> Ready — fill in the fields below.</span>
+            </div>
+
+            <p class="lede reveal">
+              Have a project in mind, a question, or just want to connect? Feel free to reach out. My contact form opens your email app with everything ready to go, and I'll get back to you as soon as I can.
+            </p>
+            <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                <label for="cf-name">// name</label>
+                <input type="text" id="cf-name" name="name" placeholder="Juan Dela Cruz" required>
+              </div>
+              <div class="form-row">
+                <label for="cf-email">// email</label>
+                <input type="email" id="cf-email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-row">
+                <label for="cf-subject">// subject</label>
+                <input type="text" id="cf-subject" name="subject" placeholder="Let's build something">
+              </div>
+              <div class="form-row">
+                <label for="cf-message">// message</label>
+                <textarea id="cf-message" name="message" rows="5" placeholder="Tell me a bit about what you need..." required></textarea>
+              </div>
+              <button type="submit" class="btn-send"><i class="codicon codicon-send"></i> Send message</button>
+              <div class="form-status" id="formStatus"></div>
+            </form>
+          </div>
+        </div>
+
+        
+
+      </div>
+
+      <div class="terminal-panel" id="terminal">
+        <div class="terminal-header">
+          <span>Terminal — zsh</span>
+          <button id="closeTerminal"><i class="codicon codicon-close"></i></button>
+        </div>
+        <div class="terminal-body">
+          <div class="line"><span class="prompt">keilah@portfolio</span> <span class="path">~/contact</span> <span class="cmd">$ cat reach-me.txt</span></div>
+          <div class="line out">email &nbsp;&nbsp;→ <a href="mailto:tumaneng.keilah1@gmail.com">tumaneng.keilah1@gmail.com</a></div>
+          <div class="line out">github &nbsp;→ <a href="https://github.com/keifvt" target="_blank">github.com/keifvt</a></div>
+          <div class="line out">linkedin → <a href="https://www.linkedin.com/in/keilah-fye-tumaneng-304431288/" target="_blank">linkedin.com/in/keilah-fye-tumaneng-304431288</a></div>
+          <div class="line"><span class="prompt">keilah@portfolio</span> <span class="path">~/contact</span> <span class="cmd">$</span><span class="cursor-blink"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="statusbar">
+    <div class="left">
+      <span class="sb-extra"><i class="codicon codicon-git-branch"></i> main</span>
+      <span id="statusFile" class="sb-file"></span>
+    </div>
+    <div class="right">
+      <span id="statusLang" class="sb-extra"></span>
+      <span class="sb-extra">UTF-8</span>
+      <span class="sb-extra">LF</span>
+      <span class="clickable" id="statusTerminal"><i class="codicon codicon-terminal"></i> <span class="sb-label">Terminal</span></span>
+      <span class="clickable" id="themeToggle" title="Toggle dark / light theme">
+        <i class="codicon codicon-color-mode" id="themeIcon"></i> <span id="themeLabel" class="sb-label">Dracula</span>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dock" id="dock">
+  <button type="button" id="dockRestore">
+    <i class="codicon codicon-window"></i> keilah-portfolio
+  </button>
+</div>
+
+<div class="closed-overlay" id="closedOverlay">
+  <div class="closed-card">
+    <h3>keilah-portfolio</h3>
+    <p>You closed the window. Reopen it to keep browsing.</p>
+    <button type="button" id="reopenBtn">Reopen</button>
+  </div>
+</div>
+
+<div class="palette-overlay" id="paletteOverlay">
+  <div class="palette">
+    <input type="text" id="paletteInput" placeholder="Go to file… (about, education, experience, certifications, projects)">
+    <div class="palette-results" id="paletteResults"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script src="animations.js"></script>
+<script src="line-numbers.js"></script>
+
+</body>
+</html>
