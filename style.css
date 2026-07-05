@@ -1,4 +1,4 @@
-  :root{
+:root{
     /* ---- Dracula (dark) ---- */
     --bg:            #282a36;
     --bg-deep:       #21222c;
@@ -713,13 +713,6 @@
     .editor-pane { display: block !important; } 
     .editor-scroll { scroll-behavior: smooth; } 
     .preview { padding-bottom: 32px !important; } 
-
-    .editor-pane[data-pane="proj-studykart"] .section-title,
-    .editor-pane[data-pane="proj-pixecured"] .section-title,
-    .editor-pane[data-pane="proj-studykart"] .eyebrow,
-    .editor-pane[data-pane="proj-pixecured"] .eyebrow {
-      display: none;
-    }
   }
   /* ---- Phone portrait ---- */
   @media (max-width:480px) and (orientation:portrait){
