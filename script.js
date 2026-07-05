@@ -1,3 +1,5 @@
+const isMobileLayout = () => window.matchMedia('(max-width: 1024px) and (orientation: portrait), (max-width: 768px)').matches;
+
 const files = {
   about:            { label: 'about.md',           lang: 'Markdown',   icon: 'ft-md' },
   education:        { label: 'education.json',     lang: 'JSON',       icon: 'ft-json' },
