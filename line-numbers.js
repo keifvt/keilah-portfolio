@@ -15,7 +15,7 @@
 
 (function () {
   const LINE_HEIGHT = 24; // px per numbered row — keep in sync with style.css
-  const mobileQuery = window.matchMedia('(max-width:640px)');
+  const mobileQuery = window.matchMedia('(max-width: 1024px) and (orientation: portrait), (max-width: 768px)');
   const scrollRoot = document.querySelector('.editor-scroll');
   if (!scrollRoot) return;
 
