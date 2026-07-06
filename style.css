@@ -150,6 +150,10 @@
     }
   }
 
+.mobile-project-track {
+  display: contents;
+}
+
   .titlebar{
     height:38px;
     background:var(--bg-titlebar);
@@ -696,9 +700,33 @@
 
     /* Activate Continuous Scroll */
     .tabs-bar { display: none !important; } 
-    .editor-pane { display: contents !important; } 
+    .editor-pane { display: block !important; } 
     .editor-scroll { scroll-behavior: smooth; } 
     .preview { padding-bottom: 32px !important; } 
+
+      
+.mobile-project-track {
+  display: block;
+  padding-bottom: 32px; 
+}
+
+
+.mobile-project-track .editor-pane,
+.mobile-project-track .preview {
+  display: contents !important;
+}
+
+
+.mobile-project-track .project-card,
+.mobile-project-track .section-title {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.mobile-project-track .eyebrow {
+  margin: 0 0 16px 0;
+  padding: 16px;
+}
   }
 
   /* ---- Smaller Phones specifically ---- */
