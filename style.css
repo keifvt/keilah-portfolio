@@ -696,7 +696,7 @@
 
     /* Activate Continuous Scroll */
     .tabs-bar { display: none !important; } 
-    .editor-pane { display: block !important; } 
+    .editor-pane { display: contents !important; } 
     .editor-scroll { scroll-behavior: smooth; } 
     .preview { padding-bottom: 32px !important; } 
   }
