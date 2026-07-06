@@ -685,7 +685,11 @@
     .eyebrow::after { display: none; }
 
     .editor-pane[data-pane="proj-studykart"] .section-title,
-    .editor-pane[data-pane="proj-pixecured"] .section-title { display: none; }
+.editor-pane[data-pane="proj-pixecured"] .section-title,
+.editor-pane[data-pane="proj-studykart"] .eyebrow,
+.editor-pane[data-pane="proj-pixecured"] .eyebrow { 
+  display: none; 
+}
 
     .editor-pane[data-pane="proj-studykart"] .preview,
     .editor-pane[data-pane="proj-pixecured"] .preview { padding-top: 0 !important; }
