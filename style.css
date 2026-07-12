@@ -53,20 +53,20 @@
     background:var(--bg-deep);
     color:var(--fg);
     font-family:var(--mono);
-    min-height:100vh;
-    overflow:auto;
+    height:100vh;
+    overflow:hidden;
     -webkit-font-smoothing:antialiased;
   }
   ::selection{ background:var(--bg-select); }
   a{ color:inherit; }
 
-  /* Hide scrollbars everywhere but keep scrolling functional */
+  
   *{ scrollbar-width:none; -ms-overflow-style:none; }
   *::-webkit-scrollbar{ display:none; width:0; height:0; }
 
   /* ================= macOS window frame ================= */
   .macbook{
-    min-height:100vh;
+    height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
