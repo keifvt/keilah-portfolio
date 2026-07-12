@@ -439,9 +439,9 @@
   /* ---- About: two-column layout (main + stat/CTA sidebar) ---- */
   .about-preview{ max-width:1040px; }
   .about-grid{
-    display:grid; grid-template-columns:1fr 300px; gap:52px; align-items:start;
+    display:grid; grid-template-columns:1fr 300px; gap:52px; align-items:stretch;
   }
-  .about-side{ display:flex; flex-direction:column; gap:16px; }
+  .about-side{ display:flex; flex-direction:column; gap:16px; position:sticky; top:24px;}
 
   .stat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
   .stat-card{
@@ -466,7 +466,8 @@
 
   .cta-card{
     border:1px solid var(--border); border-radius:10px; padding:18px;
-    background:var(--bg-hover); display:flex; flex-direction:column; gap:14px;
+    background:linear-gradient(160deg, color-mix(in srgb, var(--purple) 14%, var(--bg-hover)), var(--bg-hover));
+    display:flex; flex-direction:column; gap:14px; 
   }
   .cta-card strong{ display:block; font-family:var(--sans); font-size:.95rem; margin-bottom:3px; }
   .cta-card span{ font-family:var(--mono); font-size:.75rem; color:var(--fg-dim); }
@@ -663,7 +664,7 @@
 
  
 /* ---- Tablets (Portrait) & All Phones (Continuous Scroll Layout) ---- */
-  @media (max-width: 1024px) and (orientation: portrait), (max-width: 768px) {
+  @media (max-width: 1024px) and (orientation: portrait), (max-width: 1440px) {
     .macbook { padding: 0; }
     .window { border-radius: 0; }
     .editor-scroll { padding-left: 0; }
